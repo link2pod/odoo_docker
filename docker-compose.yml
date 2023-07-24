@@ -20,9 +20,7 @@ services:
       - "10015:8069"
       - "20015:8072" # live chat
     tty: true
-    command: 
-      - --dev=all --log-level=debug # For Dev environment
-      - --addons-path=/mnt/extra-addons  
+    command: --addons-path=/mnt/extra-addons  --dev=all --log-level=debug # For Dev environment 
     environment:
       - HOST=db
       - USER=odoo
@@ -39,9 +37,7 @@ services:
     image: garendaxe/css
     environment: 
       - CSS_CONFIG=config/file-no-setup.json
-    command: 
-      - -p 1111 
-      - -b http://css:1111      # Remember to update CSS_BASE_URL in ./addons/solid/.env
+    command: -p 1111 -b http://css:1111 # Remember to update CSS_BASE_URL in ./addons/solid/controllers/auth_signup_home.py
     volumes: 
       - ./css_data:/data        # Persist data 
     ports: 
