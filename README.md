@@ -1,4 +1,13 @@
 # Setup Dev Environment
+Edit the CSS_BASE_URL in the [.env](./addons/solid/.env) for the addon
+
+Run `docker compose up`
+
+To stop, run `docker compose down`
+
+For more details, reference [Start individual containers](#start-individual-containers)
+
+# Start individual containers
 ## Start postgres server
 Pull docker image: 
 ```bash
@@ -8,8 +17,6 @@ Start docker image:
 ```bash
 docker run -d -e POSTGRES_USER=odoo -e POSTGRES_PASSWORD=odoo -e POSTGRES_DB=postgres --name db postgres:15
 ```
-
-
 ## Start odoo server
 Pull docker image: 
 ```bash
@@ -34,7 +41,7 @@ docker run --rm -v  $(pwd)/modules:/mnt/extra-addons -p 8069:8069 --name odoo --
 ## Database
 Enter database container
 ```bash
-docker exec -it odoo bash 
+docker exec -it db bash 
 ```
 Query postgres database inside container (assume database was named testdb at setup)
 ```bash 
@@ -43,6 +50,10 @@ psql testdb -U odoo
 Useful database commands 
 `\d` `\d res.users` `select web_id from res.users;`
 
+Inspect odoo std-out logging: 
+```bash
+docker start -i odoo
+```
 ## Docker network 
 ```bash 
 docker network inspect bridge
