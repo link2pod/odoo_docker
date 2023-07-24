@@ -1,0 +1,50 @@
+version: '2'
+services:
+  db:
+    image: postgres:15
+    user: root
+    environment:
+      - POSTGRES_USER=odoo
+      - POSTGRES_PASSWORD=odoo15@2021      
+      - POSTGRES_DB=postgres
+    restart: always             # run as a service
+    volumes:
+      - ./postgresql:/var/lib/postgresql/data
+
+  odoo16:
+    image: odoo:16
+    user: root
+    depends_on:
+      - db
+    ports:
+      - "10015:8069"
+      - "20015:8072" # live chat
+    tty: true
+    command: 
+      - --dev=all --log-level=debug # For Dev environment
+      - --addons-path=/mnt/extra-addons  
+    environment:
+      - HOST=db
+      - USER=odoo
+      - PASSWORD=odoo15@2021
+    volumes:
+      #- /etc/timezone:/etc/timezone:ro
+      #- /etc/localtime:/etc/localtime:ro
+      # - ./entrypoint.sh:/entrypoint.sh   # if you want to install additional Python packages, uncomment this line!
+      - ./addons:/mnt/extra-addons 
+      - ./etc:/etc/odoo  
+    restart: always             # run as a service
+
+  css:
+    image: garendaxe/css
+    environment: 
+      - CSS_CONFIG=config/file-no-setup.json
+    command: 
+      - -p 1111 
+      - -b http://css:1111      # Remember to update CSS_BASE_URL in ./addons/solid/.env
+    volumes: 
+      - ./css_data:/data        # Persist data 
+    ports: 
+      - 8111:1111               # Container visible to host as http://localhost:8111
+    
+
