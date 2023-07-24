@@ -1,7 +1,7 @@
 # Setup Dev Environment
 Update submodules: `git submodule update --remote --merge`
 
-Edit the CSS_BASE_URL in the [.env](https://github.com/link2pod/odoo_addons/blob/928af4da0c4fec58da78a486188e766b272ac8f3/solid/.env#L3) for the addon
+Edit the CSS_BASE_URL in the [.env](https://github.com/link2pod/odoo_addons/blob/3d8bd734df107aed64be3d6846866d538925c43d/solid/controllers/auth_signup_home.py#L66) for the addon
 
 Run `docker compose up`
 
