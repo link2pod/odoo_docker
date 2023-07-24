@@ -1,4 +1,6 @@
 # Setup Dev Environment
+Update submodules: `git submodule update --remote --merge`
+
 Edit the CSS_BASE_URL in the [.env](./addons/solid/.env) for the addon
 
 Run `docker compose up`
