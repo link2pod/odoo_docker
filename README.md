@@ -1,4 +1,8 @@
 # Setup Dev Environment
+If you didn't clone the submodule `./addons/` then either 
+- reclone this repo with  `git clone --recurse-submodules git@github.com:link2pod/odoo_docker.git`
+- or clone the submodule with `git submodule update --init --recursive`
+
 Update submodules: `git submodule update --remote --merge`
 
 Edit the CSS_BASE_URL in the [.env](https://github.com/link2pod/odoo_addons/blob/3d8bd734df107aed64be3d6846866d538925c43d/solid/controllers/auth_signup_home.py#L66) for the addon
