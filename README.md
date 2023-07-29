@@ -7,9 +7,11 @@ Update submodules: `git submodule update --remote --merge`
 
 Edit the CSS_BASE_URL in the [.env](https://github.com/link2pod/odoo_addons/blob/3d8bd734df107aed64be3d6846866d538925c43d/solid/controllers/auth_signup_home.py#L66) for the addon
 
-Run `docker compose up`
+Run `docker compose up`. On browser, visit [http://localhost:10015](http://localhost:10015/)
 
 To stop, run `docker compose down`
+
+To setup the solid module, follow tutorial at [https://www.link2.ca/knowledge/article/14](https://www.link2.ca/knowledge/article/14)
 
 For more details, reference [Start individual containers](#start-individual-containers)
 
