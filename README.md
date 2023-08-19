@@ -1,6 +1,7 @@
 # Setup Dev Environment
 If you didn't clone the submodule `./addons/` then either 
 - reclone this repo with  `git clone --recurse-submodules git@github.com:link2pod/odoo_docker.git`
+- or using https: `git clone --recurse-submodules https://github.com/link2pod/odoo_docker.git`
 - or clone the submodule with `git submodule update --init --recursive`
 
 Update submodules: `git submodule update --remote --merge`
@@ -37,12 +38,12 @@ docker run -p 8069:8069 --name odoo --link db:db -t odoo
 
 Run addons 
 ```bash
-docker run -v $(pwd)/modules:/mnt/extra-addons -p 8069:8069 --name odoo --link db:db -t odoo
+docker run -v $(pwd)/addons:/mnt/extra-addons -p 8069:8069 --name odoo --link db:db -t odoo
 ```
 
 Run in dev mode 
 ```bash
-docker run --rm -v  $(pwd)/modules:/mnt/extra-addons -p 8069:8069 --name odoo --link db:db -t odoo --dev=all
+docker run --rm -v  $(pwd)/addons:/mnt/extra-addons -p 8069:8069 --name odoo --link db:db -t odoo --dev=all
 ```
 
 # Debugging 

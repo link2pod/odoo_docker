@@ -10,6 +10,7 @@ services:
     restart: always             # run as a service
     volumes:
       - ./postgresql:/var/lib/postgresql/data
+        #network_mode: "host"
 
   odoo16:
     image: odoo:16
@@ -32,6 +33,7 @@ services:
       - ./addons:/mnt/extra-addons 
       - ./etc:/etc/odoo  
     restart: always             # run as a service
+      #network_mode: "host"
 
   css:
     image: garendaxe/css
@@ -42,5 +44,6 @@ services:
       - ./css_data:/data        # Persist data 
     ports: 
       - 8111:1111               # Container visible to host as http://localhost:8111
+        #network_mode: "host"
     
 
